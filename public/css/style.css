@@ -362,7 +362,7 @@
     float: right;
     color: #727171;
 }
-.t-fo-right input[type="submit"]{
+.t-fo-right input[type="submit"], input[type="button"]{
     padding: 5px 10px;
     font-weight: bold;
     color: #fff;

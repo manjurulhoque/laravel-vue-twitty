@@ -988,6 +988,7 @@ window.Vue = __webpack_require__(35);
 
 Vue.component('example-component', __webpack_require__(38));
 Vue.component('side-bar', __webpack_require__(53));
+Vue.component('create-tweet', __webpack_require__(60));
 
 var app = new Vue({
   el: '#app'
@@ -43353,41 +43354,8 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__CreateTweet_vue__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__CreateTweet_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__CreateTweet_vue__);
 //
 //
 //
@@ -43514,14 +43482,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['user'],
     data: function data() {
         return {};
     },
-    mounted: function mounted() {
-        console.log(this.user);
-    }
+
+    components: {
+        CreateTweet: __WEBPACK_IMPORTED_MODULE_0__CreateTweet_vue___default.a
+    },
+    mounted: function mounted() {}
 });
 
 /***/ }),
@@ -43576,30 +43547,25 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "in-center" }, [
-          _c("div", { staticClass: "in-center-wrap" }, [
-            _c("div", { staticClass: "tweet-wrap" }, [
-              _c("div", { staticClass: "tweet-inner" }, [
-                _c("div", { staticClass: "tweet-h-left" }, [
-                  _c("div", { staticClass: "tweet-h-img" }, [
-                    _c("img", { attrs: { src: _vm.user.profile_image } })
-                  ])
-                ]),
-                _vm._v(" "),
-                _vm._m(1),
-                _vm._v(" "),
-                _vm._m(2)
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "tweets" }),
-            _vm._v(" "),
-            _vm._m(3),
-            _vm._v(" "),
-            _c("div", { staticClass: "popupTweet" })
-          ])
+          _c(
+            "div",
+            { staticClass: "in-center-wrap" },
+            [
+              _c("create-tweet", {
+                attrs: { profileImage: _vm.user.profile_image }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "tweets" }),
+              _vm._v(" "),
+              _vm._m(1),
+              _vm._v(" "),
+              _c("div", { staticClass: "popupTweet" })
+            ],
+            1
+          )
         ]),
         _vm._v(" "),
-        _vm._m(4)
+        _vm._m(2)
       ])
     ])
   ])
@@ -43655,53 +43621,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "tweet-body" }, [
-      _c("textarea", {
-        staticClass: "status",
-        attrs: {
-          name: "status",
-          placeholder: "Type Something here!",
-          rows: "4",
-          cols: "50"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "tweet-footer" }, [
-      _c("div", { staticClass: "t-fo-left" }, [
-        _c("ul", [
-          _c("input", { attrs: { type: "file", name: "file", id: "file" } }),
-          _vm._v(" "),
-          _c("li", { staticStyle: { "list-style-type": "none" } }, [
-            _c("label", { attrs: { for: "file" } }, [
-              _c("i", {
-                staticClass: "fa fa-camera",
-                attrs: { "aria-hidden": "true" }
-              })
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "tweet-error" })
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "t-fo-right" }, [
-        _c("span", { attrs: { id: "count" } }, [_vm._v("140")]),
-        _vm._v(" "),
-        _c("input", {
-          attrs: { type: "submit", name: "tweet", value: "tweet" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "loading-div" }, [
       _c("img", {
         staticStyle: { display: "none" },
@@ -43747,6 +43666,231 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-00467796", module.exports)
+  }
+}
+
+/***/ }),
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(39)
+/* script */
+var __vue_script__ = __webpack_require__(61)
+/* template */
+var __vue_template__ = __webpack_require__(62)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\CreateTweet.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e75582a4", Component.options)
+  } else {
+    hotAPI.reload("data-v-e75582a4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 61 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var url = 'http://localhost:8000/';
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['profileImage'],
+    data: function data() {
+        return {
+            tweet: ''
+        };
+    },
+    mounted: function mounted() {},
+
+    methods: {
+        onSubmit: function onSubmit() {
+            var _this = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(url + 'store-tweet', {
+                tweet: this.tweet
+            }).then(function (res) {
+                console.log(res);
+                _this.tweet = '';
+            }).catch(function (err) {
+                return console.log(err);
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "tweet-wrap" }, [
+    _c("div", { staticClass: "tweet-inner" }, [
+      _c("div", { staticClass: "tweet-h-left" }, [
+        _c("div", { staticClass: "tweet-h-img" }, [
+          _c("img", { attrs: { src: _vm.profileImage } })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "tweet-body" }, [
+        _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.tweet,
+              expression: "tweet"
+            }
+          ],
+          staticClass: "status",
+          attrs: {
+            name: "tweet",
+            placeholder: "Type Something here!",
+            rows: "4",
+            cols: "50"
+          },
+          domProps: { value: _vm.tweet },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.tweet = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "tweet-footer" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "t-fo-right" }, [
+          _c("span", { attrs: { id: "count" } }, [_vm._v("140")]),
+          _vm._v(" "),
+          _c("input", {
+            attrs: { type: "button", name: "tweet", value: "tweet" },
+            on: {
+              click: function($event) {
+                _vm.onSubmit()
+              }
+            }
+          })
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "t-fo-left" }, [
+      _c("ul", [
+        _c("input", { attrs: { type: "file", name: "file", id: "file" } }),
+        _vm._v(" "),
+        _c("li", { staticStyle: { "list-style-type": "none" } }, [
+          _c("label", { attrs: { for: "file" } }, [
+            _c("i", {
+              staticClass: "fa fa-camera",
+              attrs: { "aria-hidden": "true" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "tweet-error" })
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e75582a4", module.exports)
   }
 }
 

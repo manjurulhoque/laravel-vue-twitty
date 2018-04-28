@@ -14,6 +14,7 @@
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', 'HomeController@index')->name('home');
+    Route::post('/store-tweet', 'TweetController@store')->name('store.tweet');
 });
 
 Auth::routes();

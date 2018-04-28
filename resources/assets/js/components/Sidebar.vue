@@ -71,43 +71,8 @@
                 <div class="in-center">
                     <div class="in-center-wrap">
                         <!--TWEET WRAPPER-->
-                        <div class="tweet-wrap">
-                            <div class="tweet-inner">
-                                <div class="tweet-h-left">
-                                    <div class="tweet-h-img">
-                                        <!-- PROFILE-IMAGE -->
-                                        <img :src="user.profile_image"/>
-                                    </div>
-                                </div>
-                                <div class="tweet-body">
-                                    <textarea class="status" name="status" placeholder="Type Something here!"
-                                              rows="4" cols="50"></textarea>
-                                    <!--<div class="hash-box">-->
-                                    <!--<ul>-->
-                                    <!--</ul>-->
-                                    <!--</div>-->
-
-                                </div>
-                                <div class="tweet-footer">
-                                    <div class="t-fo-left">
-                                        <ul>
-                                            <input type="file" name="file" id="file"/>
-                                            <li style="list-style-type: none;">
-                                                <label for="file">
-                                                    <i class="fa fa-camera" aria-hidden="true"></i>
-                                                </label>
-                                                <span class="tweet-error"></span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="t-fo-right">
-                                        <span id="count">140</span>
-                                        <input type="submit" name="tweet" value="tweet"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!--TWEET WRAP END-->
-
+                        <create-tweet :profileImage="user.profile_image"></create-tweet>
+                        <!--TWEET WRAP END-->
 
                         <!--Tweet SHOW WRAPPER-->
                         <div class="tweets">
@@ -159,13 +124,17 @@
 </template>
 
 <script>
+    import CreateTweet from './CreateTweet.vue';
     export default {
         props: ['user'],
         data() {
             return {}
         },
+        components: {
+            CreateTweet
+        },
         mounted() {
-            console.log(this.user)
+
         }
     }
 </script>
