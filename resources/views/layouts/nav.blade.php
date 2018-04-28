@@ -67,6 +67,11 @@
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="#">
+                            <label class="tweet-btn">Tweet</label>
+                        </a>
+                    </li>
                     @endguest
             </ul>
         </div>

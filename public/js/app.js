@@ -970,7 +970,6 @@ module.exports = __webpack_require__(42);
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -988,6 +987,7 @@ window.Vue = __webpack_require__(35);
  */
 
 Vue.component('example-component', __webpack_require__(38));
+Vue.component('side-bar', __webpack_require__(53));
 
 var app = new Vue({
   el: '#app'
@@ -43289,6 +43289,466 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(39)
+/* script */
+var __vue_script__ = __webpack_require__(54)
+/* template */
+var __vue_template__ = __webpack_require__(55)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Sidebar.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-00467796", Component.options)
+  } else {
+    hotAPI.reload("data-v-00467796", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 54 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['user'],
+    data: function data() {
+        return {};
+    },
+    mounted: function mounted() {
+        console.log(this.user);
+    }
+});
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "inner-wrapper" }, [
+    _c("div", { staticClass: "in-wrapper" }, [
+      _c("div", { staticClass: "in-full-wrap" }, [
+        _c("div", { staticClass: "in-left" }, [
+          _c("div", { staticClass: "in-left-wrap" }, [
+            _c("div", { staticClass: "info-box" }, [
+              _c("div", { staticClass: "info-inner" }, [
+                _c("div", { staticClass: "info-in-head" }, [
+                  _c("img", { attrs: { src: _vm.user.profile_cover } })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "info-in-body" }, [
+                  _c("div", { staticClass: "in-b-box" }, [
+                    _c("div", { staticClass: "in-b-img" }, [
+                      _c("img", { attrs: { src: _vm.user.profile_image } })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "info-body-name" }, [
+                    _c("div", { staticClass: "in-b-name" }, [
+                      _c("div", [
+                        _c("a", { attrs: { href: "PROFILE-LINK" } }, [
+                          _vm._v(_vm._s(_vm.user.screen_name))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("span", [
+                        _c("small", [
+                          _c("a", { attrs: { href: "PROFILE-LINK" } }, [
+                            _vm._v("@" + _vm._s(_vm.user.username))
+                          ])
+                        ])
+                      ])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(0)
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "in-center" }, [
+          _c("div", { staticClass: "in-center-wrap" }, [
+            _c("div", { staticClass: "tweet-wrap" }, [
+              _c("div", { staticClass: "tweet-inner" }, [
+                _c("div", { staticClass: "tweet-h-left" }, [
+                  _c("div", { staticClass: "tweet-h-img" }, [
+                    _c("img", { attrs: { src: _vm.user.profile_image } })
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(1),
+                _vm._v(" "),
+                _vm._m(2)
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "tweets" }),
+            _vm._v(" "),
+            _vm._m(3),
+            _vm._v(" "),
+            _c("div", { staticClass: "popupTweet" })
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(4)
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "info-in-footer" }, [
+      _c("div", { staticClass: "number-wrapper" }, [
+        _c("div", { staticClass: "num-box" }, [
+          _c("div", { staticClass: "num-head" }, [
+            _vm._v(
+              "\n                                            TWEETS\n                                        "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "num-body" }, [
+            _vm._v(
+              "\n                                            10\n                                        "
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "num-box" }, [
+          _c("div", { staticClass: "num-head" }, [
+            _vm._v(
+              "\n                                            FOLLOWING\n                                        "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "num-body" }, [
+            _c("span", { staticClass: "count-following" }, [_vm._v("10")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "num-box" }, [
+          _c("div", { staticClass: "num-head" }, [
+            _vm._v(
+              "\n                                            FOLLOWERS\n                                        "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "num-body" }, [
+            _c("span", { staticClass: "count-followers" }, [_vm._v("10")])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "tweet-body" }, [
+      _c("textarea", {
+        staticClass: "status",
+        attrs: {
+          name: "status",
+          placeholder: "Type Something here!",
+          rows: "4",
+          cols: "50"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "tweet-footer" }, [
+      _c("div", { staticClass: "t-fo-left" }, [
+        _c("ul", [
+          _c("input", { attrs: { type: "file", name: "file", id: "file" } }),
+          _vm._v(" "),
+          _c("li", { staticStyle: { "list-style-type": "none" } }, [
+            _c("label", { attrs: { for: "file" } }, [
+              _c("i", {
+                staticClass: "fa fa-camera",
+                attrs: { "aria-hidden": "true" }
+              })
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "tweet-error" })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "t-fo-right" }, [
+        _c("span", { attrs: { id: "count" } }, [_vm._v("140")]),
+        _vm._v(" "),
+        _c("input", {
+          attrs: { type: "submit", name: "tweet", value: "tweet" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "loading-div" }, [
+      _c("img", {
+        staticStyle: { display: "none" },
+        attrs: { id: "loader", src: "assets/images/loading.svg" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "in-right" }, [
+      _c("div", { staticClass: "in-right-wrap" }, [
+        _c("div", { staticClass: "follow-wrap" }, [
+          _c("div", { staticClass: "follow-inner" }, [
+            _c("div", { staticClass: "follow-title" }, [
+              _c("h3", [_vm._v("Who to follow")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "follow-body" }, [
+              _c("div", { staticClass: "follow-img" }, [
+                _c("img", { attrs: { src: "PROFILE-IMAGE" } })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "follow-content" }, [
+                _c("div", { staticClass: "fo-co-head" }, [
+                  _c("a", { attrs: { href: "PROFILE-LINK" } }, [
+                    _vm._v("ScreenName")
+                  ]),
+                  _c("span", [_vm._v("@USERNAME")])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-00467796", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
