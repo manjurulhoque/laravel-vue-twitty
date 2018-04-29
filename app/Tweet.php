@@ -4,6 +4,7 @@ namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Tweet extends Model
 {
@@ -21,5 +22,15 @@ class Tweet extends Model
     public function getCreatedAtAttribute($date)
     {
         return Carbon::createFromFormat('Y-m-d H:i:s', $date)->diffForHumans();
+    }
+
+    public function likers()
+    {
+        return $this->hasMany(User::class);
+    }
+
+    public function liked()
+    {
+        return (bool)$this::where('user_id', Auth::id())->where('id', $this->id)->first();
     }
 }

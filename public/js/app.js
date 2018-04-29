@@ -1148,12 +1148,16 @@ window.Vue = __webpack_require__(37);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.prototype.$url = 'http://localhost:8000/';
 Vue.component('example-component', __webpack_require__(40));
 Vue.component('side-bar', __webpack_require__(43));
 Vue.component('create-tweet', __webpack_require__(11));
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  data: {
+    return: {}
+  }
 });
 
 /***/ }),
@@ -43582,7 +43586,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-var url = 'http://localhost:8000/';
+//    const url = 'http://localhost:8000/';
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['profileImage'],
@@ -43611,7 +43615,8 @@ var url = 'http://localhost:8000/';
         onSubmit: function onSubmit() {
             var _this = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(url + 'store-tweet', {
+            // here $url is global instance is defined in app.js
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(this.$url + 'store-tweet', {
                 tweet: this.tweet
             }).then(function (res) {
                 console.log(res);
@@ -43777,21 +43782,8 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Like_vue__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Like_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Like_vue__);
 //
 //
 //
@@ -43846,27 +43838,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-var url = 'http://localhost:8000/';
+//    const url = 'http://localhost:8000/';
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            tweets: {}
+            tweets: {},
+            result: ''
         };
     },
-    mounted: function mounted() {},
+
+    components: {
+        Like: __WEBPACK_IMPORTED_MODULE_1__Like_vue___default.a
+    },
+    mounted: function mounted() {
+        //console.log(this.tweets);
+    },
     created: function created() {
         this.fetchAll();
     },
 
+    computed: {},
     methods: {
-        test: function test() {
-            console.log('testing');
+        checkingLike: function checkingLike(id) {
+            //let result = ''
+
+            return vm.result;
         },
         fetchAll: function fetchAll() {
             var _this = this;
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(url + 'tweets').then(function (res) {
+            // here $url is global instance is defined in app.js
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(this.$url + 'tweets').then(function (res) {
                 _this.tweets = res.data;
             }).catch(function (error) {
                 console.log(error);
@@ -43891,12 +43895,14 @@ var render = function() {
           _c("div", { staticClass: "t-show-inner" }, [
             _c("div", { staticClass: "t-show-popup" }, [
               _c("div", { staticClass: "t-show-head" }, [
-                _vm._m(0, true),
+                _c("div", { staticClass: "t-show-img" }, [
+                  _c("img", { attrs: { src: tweet.user.profile_image } })
+                ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "t-s-head-content" }, [
                   _c("div", { staticClass: "t-h-c-name" }, [
                     _c("span", [
-                      _c("a", { attrs: { href: "PROFILE-LINK" } }, [
+                      _c("a", { attrs: { href: "#" } }, [
                         _vm._v(_vm._s(tweet.user.screen_name))
                       ])
                     ]),
@@ -43917,11 +43923,16 @@ var render = function() {
               ]),
               _vm._v(" "),
               tweet.image
-                ? _c("div", { staticClass: "t-show-body" }, [_vm._m(1, true)])
+                ? _c("div", { staticClass: "t-show-body" }, [_vm._m(0, true)])
                 : _vm._e()
             ]),
             _vm._v(" "),
-            _vm._m(2, true)
+            _c(
+              "div",
+              { staticClass: "t-show-footer" },
+              [_c("like", { attrs: { id: tweet.id, tweet_id: tweet.id } })],
+              1
+            )
           ])
         ])
       ])
@@ -43933,77 +43944,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "t-show-img" }, [
-      _c("img", { attrs: { src: "PROFILE-IMAGE" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "t-s-b-inner" }, [
       _c("div", { staticClass: "t-s-b-inner-in" }, [
-        _c("img", { staticClass: "imagePopup", attrs: { src: "TWEET-IMAGE" } })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "t-show-footer" }, [
-      _c("div", { staticClass: "t-s-f-right" }, [
-        _c("ul", [
-          _c("li", [
-            _c("button", [
-              _c("a", { attrs: { href: "#" } }, [
-                _c("i", {
-                  staticClass: "fa fa-share",
-                  attrs: { "aria-hidden": "true" }
-                })
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("button", [
-              _c("a", { attrs: { href: "#" } }, [
-                _c("i", {
-                  staticClass: "fa fa-retweet",
-                  attrs: { "aria-hidden": "true" }
-                })
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("button", [
-              _c("a", { attrs: { href: "#" } }, [
-                _c("i", {
-                  staticClass: "fa fa-heart-o",
-                  attrs: { "aria-hidden": "true" }
-                })
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("a", { staticClass: "more", attrs: { href: "#" } }, [
-              _c("i", {
-                staticClass: "fa fa-ellipsis-h",
-                attrs: { "aria-hidden": "true" }
-              })
-            ]),
-            _vm._v(" "),
-            _c("ul", [
-              _c("li", [
-                _c("label", { staticClass: "deleteTweet" }, [
-                  _vm._v("Delete Tweet")
-                ])
-              ])
-            ])
-          ])
-        ])
+        _c("img", { staticClass: "imagePopup", attrs: { src: "" } })
       ])
     ])
   }
@@ -44196,6 +44139,256 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(63)
+/* template */
+var __vue_template__ = __webpack_require__(64)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Like.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1bbdfa0e", Component.options)
+  } else {
+    hotAPI.reload("data-v-1bbdfa0e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 63 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+//    const url = 'http://localhost:8000/';
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['id', 'tweet_id'],
+    data: function data() {
+        return {
+            liked: false,
+            addLike: false
+        };
+    },
+    mounted: function mounted() {
+        this.checkingLike();
+    },
+
+    methods: {
+        like: function like() {
+            var _this = this;
+
+            if (!this.liked) {
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(this.$url + ('like/' + this.tweet_id)).then(function (res) {
+                    console.log(res);
+                    _this.liked = true;
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            } else {
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(this.$url + ('unlike/' + this.tweet_id)).then(function (res) {
+                    console.log(res);
+                    _this.liked = false;
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
+        },
+        checkingLike: function checkingLike() {
+            var vm = this;
+            // here $url is global instance is defined in app.js
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(this.$url + ('check-like/' + this.id)).then(function (res) {
+                vm.liked = res.data;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "t-s-f-right" }, [
+    _c("ul", [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _c("li", [
+        _c(
+          "button",
+          {
+            class: _vm.liked ? "unlike-btn" : "like-btn",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                _vm.like()
+              }
+            }
+          },
+          [
+            _c("a", { attrs: { href: "#" } }, [
+              _c("i", {
+                staticClass: "fa",
+                class: _vm.liked ? "fa-heart" : "fa-heart-o",
+                attrs: { "aria-hidden": "true" }
+              })
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _vm._m(2)
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("button", [
+        _c("a", { attrs: { href: "#" } }, [
+          _c("i", {
+            staticClass: "fa fa-share",
+            attrs: { "aria-hidden": "true" }
+          })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("button", [
+        _c("a", { attrs: { href: "#" } }, [
+          _c("i", {
+            staticClass: "fa fa-retweet",
+            attrs: { "aria-hidden": "true" }
+          })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("a", { staticClass: "more", attrs: { href: "#" } }, [
+        _c("i", {
+          staticClass: "fa fa-ellipsis-h",
+          attrs: { "aria-hidden": "true" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("ul", [
+        _c("li", [
+          _c("label", { staticClass: "deleteTweet" }, [_vm._v("Delete Tweet")])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1bbdfa0e", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

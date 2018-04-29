@@ -42,7 +42,7 @@
 </template>
 
 <script>
-    const url = 'http://localhost:8000/';
+//    const url = 'http://localhost:8000/';
     import axios from 'axios';
     export default {
         props: ['profileImage'],
@@ -70,7 +70,8 @@
         },
         methods: {
             onSubmit() {
-                axios.post(url + 'store-tweet', {
+                // here $url is global instance is defined in app.js
+                axios.post(this.$url + 'store-tweet', {
                     tweet: this.tweet
                 }).then(res => {
                     console.log(res);

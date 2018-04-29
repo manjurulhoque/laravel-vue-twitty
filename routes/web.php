@@ -16,6 +16,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::post('/store-tweet', 'TweetController@store')->name('store.tweet');
     Route::get('/tweets', 'TweetController@index')->name('tweets');
+
+    Route::post('like/{tweet}', 'LikeController@likeTweet');
+    Route::post('unlike/{tweet}', 'LikeController@unLikeTweet');
+
+    // check tweet like
+    Route::get('check-like/{id}', 'LikeController@checkLike');
 });
 
 Auth::routes();

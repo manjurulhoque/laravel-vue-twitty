@@ -13,12 +13,13 @@
                     <div class="t-show-popup">
                         <div class="t-show-head">
                             <div class="t-show-img">
-                                <img src="PROFILE-IMAGE"/>
+                                <img :src="tweet.user.profile_image"/>
                             </div>
                             <div class="t-s-head-content">
                                 <div class="t-h-c-name">
                                     <span>
-                                        <a href="PROFILE-LINK">{{ tweet.user.screen_name }}</a>
+                                        <!--PROFILE-LINK-->
+                                        <a href="#">{{ tweet.user.screen_name }}</a>
                                     </span>
                                     <span>@{{ tweet.user.username }}</span>
                                     <span>{{ tweet.created_at }}</span>
@@ -33,32 +34,16 @@
                         <div class="t-show-body" v-if="tweet.image">
                             <div class="t-s-b-inner">
                                 <div class="t-s-b-inner-in">
-                                    <img src="TWEET-IMAGE" class="imagePopup"/>
+                                    <!--TWEET-IMAGE-->
+                                    <img src="" class="imagePopup"/>
                                 </div>
                             </div>
                         </div>
                         <!--tweet show body end-->
                     </div>
                     <div class="t-show-footer">
-                        <div class="t-s-f-right">
-                            <ul>
-                                <li>
-                                    <button><a href="#"><i class="fa fa-share" aria-hidden="true"></i></a></button>
-                                </li>
-                                <li>
-                                    <button><a href="#"><i class="fa fa-retweet" aria-hidden="true"></i></a></button>
-                                </li>
-                                <li>
-                                    <button><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></button>
-                                </li>
-                                <li>
-                                    <a href="#" class="more"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-                                    <ul>
-                                        <li><label class="deleteTweet">Delete Tweet</label></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
+                        <!--like vue-->
+                        <like :id="tweet.id" :tweet_id="tweet.id"></like>
                     </div>
                 </div>
             </div>
@@ -67,26 +52,35 @@
 </template>
 
 <script>
-    const url = 'http://localhost:8000/';
+//    const url = 'http://localhost:8000/';
     import axios from 'axios';
+    import Like from './Like.vue';
     export default {
         data() {
             return {
-                tweets: {}
+                tweets: {},
+                result: ''
             }
         },
+        components: {
+            Like
+        },
         mounted() {
-
+            //console.log(this.tweets);
         },
         created() {
             this.fetchAll();
         },
+        computed: {},
         methods: {
-            test(){
-                console.log('testing');
+            checkingLike(id){
+                //let result = ''
+
+                return vm.result;
             },
             fetchAll() {
-                axios.get(url + 'tweets')
+                // here $url is global instance is defined in app.js
+                axios.get(this.$url + 'tweets')
                     .then(res => {
                         this.tweets = res.data;
                     })

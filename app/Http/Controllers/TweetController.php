@@ -11,8 +11,8 @@ class TweetController extends Controller
 {
     public function index()
     {
-        // lazy loading
-        $tweets = Tweet::with('user')->where('user_id', Auth::id())->get();
+        // eager loading
+        $tweets = Tweet::with('user')->where('user_id', Auth::id())->orderBy('created_at', 'DESC')->get();
 
         return response()->json($tweets, 201);
     }
