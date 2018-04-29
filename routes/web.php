@@ -22,6 +22,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     // check tweet like
     Route::get('check-like/{id}', 'LikeController@checkLike');
+
+    // profile
+    Route::get('users/{username}', 'HomeController@profile')->name('profile');
 });
 
 Auth::routes();

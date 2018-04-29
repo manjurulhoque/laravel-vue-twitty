@@ -44,7 +44,8 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
                            aria-haspopup="true">
-                            <img class="img-thumbnail" width="30px" height="30px" src="{{ Auth::user()->profile_image }}"/><span class="caret"></span>
+                            <img class="img-thumbnail" width="30px" height="30px"
+                                 src="{{ asset(Auth::user()->profile_image) }}"/><span class="caret"></span>
                         </a>
 
                         <ul class="dropdown-menu">

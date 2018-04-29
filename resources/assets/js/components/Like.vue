@@ -19,7 +19,7 @@
                 <button :class="liked ? 'unlike-btn' : 'like-btn'" @click.prevent="like()">
                     <a href="#">
                         <i class="fa" :class="liked ? 'fa-heart' : 'fa-heart-o' " aria-hidden="true">
-                            <span class="likesCounter">{{ total }}</span>
+                            <span class="likesCounter" v-if="total">{{ total }}</span>
                         </i>
                     </a>
                 </button>
@@ -77,7 +77,6 @@
                 // here $url is global instance is defined in app.js
                 axios.get(this.$url + `check-like/${this.id}`)
                     .then(res => {
-//                        console.log(res);
                         vm.liked = res.data.result;
                         this.total = res.data.total;
                     })

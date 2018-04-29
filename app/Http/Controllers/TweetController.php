@@ -12,7 +12,7 @@ class TweetController extends Controller
     public function index()
     {
         // eager loading
-        $tweets = Tweet::with('user')->where('user_id', Auth::id())->orderBy('created_at', 'DESC')->get();
+        $tweets = Tweet::with('user')->orderBy('created_at', 'DESC')->get();
 
         return response()->json($tweets, 201);
     }

@@ -44283,7 +44283,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var vm = this;
             // here $url is global instance is defined in app.js
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(this.$url + ('check-like/' + this.id)).then(function (res) {
-                //                        console.log(res);
                 vm.liked = res.data.result;
                 _this2.total = res.data.total;
             }).catch(function (error) {
@@ -44329,9 +44328,11 @@ var render = function() {
                   attrs: { "aria-hidden": "true" }
                 },
                 [
-                  _c("span", { staticClass: "likesCounter" }, [
-                    _vm._v(_vm._s(_vm.total))
-                  ])
+                  _vm.total
+                    ? _c("span", { staticClass: "likesCounter" }, [
+                        _vm._v(_vm._s(_vm.total))
+                      ])
+                    : _vm._e()
                 ]
               )
             ])

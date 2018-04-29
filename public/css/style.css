@@ -12,6 +12,102 @@
     cursor: pointer;
 }
 
+
+
+/*HEADER SECTION*/
+.nav .nav-left ul li i{
+    margin-right: 4px;
+    color: #828a92;
+    font-size: 22px;
+    position: relative;
+    top: 2px;
+}
+
+.nav .drop-wrap{
+    position: absolute;
+    background: #fff;
+    top:50px;
+    border-bottom-right-radius:4px;
+    border-bottom-left-radius: 4px;
+    overflow: hidden;
+    display: none;
+}
+
+input[type="checkbox"]#drop-wrap1{
+    display: none;
+}
+.drop-label{
+    background: none !important;
+    border: none !important;
+}
+
+input[type="checkbox"]#drop-wrap1:checked ~ .drop-wrap{
+    display: block
+}
+
+.nav-click.input[type="check-box"] ~ .drop-wrap{
+    display: block;
+}
+.nav .drop-inner ul li a{
+    display : inline-block;
+}
+
+.av ul li.hover:hover> ul{
+    display: block;
+}
+.nav-right{
+    height: 50px;
+}
+.nav .nav-right ul ul li:hover{
+    background:#65ba54;
+
+}
+.nav .nav-right ul ul li:hover> a{
+    color:white;
+}
+.nav .nav-right ul li img{
+    width: 40px;
+    margin-top: 5px;
+}
+.nav ul ul li {
+    display: block;
+    float: none;
+    line-height: 30px;
+    margin: 10px 0px;
+}
+.nav .nav-left ul li:hover{
+    box-shadow: inset 0px -4px 0px #6cc854;}
+.nav .nav-left ul li:hover a .fa, .nav .nav-left ul li:hover a{
+    color:#6cc854;
+}
+
+.nav .nav-right ul li input[type="text"]{
+    padding: 5px 20px 5px 5px;
+    border: 1px solid #ccc;
+    background: #f0f0f0;
+    border-radius: 15px;
+}
+.nav .nav-right ul li label{
+    background: #5ab2f5;
+    border: 1px solid #5ab2f5;
+    padding: 8px 20px;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 600;
+    -webkit-user-select: none;
+    -moz-user-select:none;
+    user-select: none;
+    cursor:pointer;
+}
+
+.nav .nav-right ul li input[type="submit"]:hover{
+    background:#2492e6;
+}
+.nav .nav-right ul li .fa{
+    left: -20px;
+    position: relative;
+}
+
 li{
     list-style: none;
 }
