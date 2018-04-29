@@ -44241,15 +44241,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
-//    const url = 'http://localhost:8000/';
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['id', 'tweet_id'],
     data: function data() {
         return {
             liked: false,
-            addLike: false
+            total: ''
         };
     },
     mounted: function mounted() {
@@ -44262,25 +44263,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             if (!this.liked) {
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(this.$url + ('like/' + this.tweet_id)).then(function (res) {
-                    console.log(res);
                     _this.liked = true;
+                    _this.total = res.data.total;
                 }).catch(function (error) {
                     console.log(error);
                 });
             } else {
                 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(this.$url + ('unlike/' + this.tweet_id)).then(function (res) {
-                    console.log(res);
                     _this.liked = false;
+                    _this.total = res.data.total;
                 }).catch(function (error) {
                     console.log(error);
                 });
             }
         },
         checkingLike: function checkingLike() {
+            var _this2 = this;
+
             var vm = this;
             // here $url is global instance is defined in app.js
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(this.$url + ('check-like/' + this.id)).then(function (res) {
-                vm.liked = res.data;
+                //                        console.log(res);
+                vm.liked = res.data.result;
+                _this2.total = res.data.total;
             }).catch(function (error) {
                 console.log(error);
             });
@@ -44316,11 +44321,19 @@ var render = function() {
           },
           [
             _c("a", { attrs: { href: "#" } }, [
-              _c("i", {
-                staticClass: "fa",
-                class: _vm.liked ? "fa-heart" : "fa-heart-o",
-                attrs: { "aria-hidden": "true" }
-              })
+              _c(
+                "i",
+                {
+                  staticClass: "fa",
+                  class: _vm.liked ? "fa-heart" : "fa-heart-o",
+                  attrs: { "aria-hidden": "true" }
+                },
+                [
+                  _c("span", { staticClass: "likesCounter" }, [
+                    _vm._v(_vm._s(_vm.total))
+                  ])
+                ]
+              )
             ])
           ]
         )

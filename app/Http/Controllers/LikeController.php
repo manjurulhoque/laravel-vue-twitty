@@ -17,10 +17,11 @@ class LikeController extends Controller
         $like = Like::updateOrCreate(
             ['tweet_id' => $tweet->id, 'user_id' => Auth::id()],
             ['like' => 1]);
+        $total_like = $tweet->likes()->where('like', 1)->count();
 
 //        Auth::user()->likes()->associate($tweet->id);
 
-        return response()->json($like, 201);
+        return response()->json(['message' => 'like', 'total' => $total_like], 201);
     }
 
     public function unLikeTweet($id)
@@ -34,11 +35,15 @@ class LikeController extends Controller
             ['tweet_id' => $tweet->id, 'user_id' => Auth::id()],
             ['like' => 0]);
 
-        return response()->json($like, 201);
+        $total_like = $tweet->likes()->where('like', 1)->count();
+
+        return response()->json(['message' => 'like', 'total' => $total_like], 201);
     }
 
     public function checkLike($id)
     {
+        $tweet = Tweet::find($id);
+        $total_like = $tweet->likes()->where('like', 1)->count();
         $result = false;
         if (Like::where('user_id', Auth::id())
             ->where('tweet_id', $id)
@@ -47,6 +52,6 @@ class LikeController extends Controller
             $result = true;
         }
 
-        return response()->json($result, 201);
+        return response()->json(['result' => $result, 'total' => $total_like], 201);
     }
 }

@@ -18,7 +18,9 @@
             <li>
                 <button :class="liked ? 'unlike-btn' : 'like-btn'" @click.prevent="like()">
                     <a href="#">
-                        <i class="fa" :class="liked ? 'fa-heart' : 'fa-heart-o' " aria-hidden="true"></i>
+                        <i class="fa" :class="liked ? 'fa-heart' : 'fa-heart-o' " aria-hidden="true">
+                            <span class="likesCounter">{{ total }}</span>
+                        </i>
                     </a>
                 </button>
             </li>
@@ -36,13 +38,12 @@
 
 <script>
     import axios from 'axios';
-    //    const url = 'http://localhost:8000/';
     export default {
         props: ['id', 'tweet_id'],
         data() {
             return {
                 liked: false,
-                addLike: false
+                total: ''
             }
         },
         mounted() {
@@ -53,8 +54,8 @@
                 if (!this.liked) {
                     axios.post(this.$url + `like/${this.tweet_id}`)
                         .then(res => {
-                            console.log(res);
                             this.liked = true;
+                            this.total = res.data.total;
                         })
                         .catch(error => {
                             console.log(error)
@@ -63,8 +64,8 @@
                 else {
                     axios.post(this.$url + `unlike/${this.tweet_id}`)
                         .then(res => {
-                            console.log(res);
                             this.liked = false;
+                            this.total = res.data.total;
                         })
                         .catch(error => {
                             console.log(error)
@@ -76,7 +77,9 @@
                 // here $url is global instance is defined in app.js
                 axios.get(this.$url + `check-like/${this.id}`)
                     .then(res => {
-                        vm.liked = res.data;
+//                        console.log(res);
+                        vm.liked = res.data.result;
+                        this.total = res.data.total;
                     })
                     .catch(error => {
                         console.log(error)
