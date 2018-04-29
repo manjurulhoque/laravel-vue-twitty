@@ -76,7 +76,7 @@
 
                         <!--Tweet SHOW WRAPPER-->
                         <div class="tweets">
-                            <!--TWEETS HERE-->
+                            <all-tweets></all-tweets>
                         </div>
                         <!--TWEETS SHOW WRAPPER-->
 
@@ -125,13 +125,15 @@
 
 <script>
     import CreateTweet from './CreateTweet.vue';
+    import Tweets from './Tweets.vue';
     export default {
         props: ['user'],
         data() {
             return {}
         },
         components: {
-            CreateTweet
+            CreateTweet,
+            allTweets: Tweets
         },
         mounted() {
 

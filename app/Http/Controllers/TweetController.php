@@ -9,6 +9,14 @@ use Auth;
 
 class TweetController extends Controller
 {
+    public function index()
+    {
+        // lazy loading
+        $tweets = Tweet::with('user')->where('user_id', Auth::id())->get();
+
+        return response()->json($tweets, 201);
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [

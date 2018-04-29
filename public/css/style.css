@@ -12,6 +12,10 @@
     cursor: pointer;
 }
 
+li{
+    list-style: none;
+}
+
 /*BODY SECTION*/
 .in-wrapper{
     width: 100%;
@@ -362,6 +366,7 @@
     float: right;
     color: #727171;
 }
+
 .t-fo-right input[type="submit"], input[type="button"]{
     padding: 5px 10px;
     font-weight: bold;
