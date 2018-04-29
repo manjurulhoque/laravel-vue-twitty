@@ -43580,6 +43580,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 var url = 'http://localhost:8000/';
 
@@ -43592,6 +43593,20 @@ var url = 'http://localhost:8000/';
     },
     mounted: function mounted() {},
 
+    computed: {
+        charactersLeft: function charactersLeft() {
+            return 140 - this.tweet.length;
+        },
+        limitedClass: function limitedClass() {
+            var char = this.tweet.length;
+
+            if (char.length === 140) {
+                return true;
+            }
+
+            //                return (140 - char);
+        }
+    },
     methods: {
         onSubmit: function onSubmit() {
             var _this = this;
@@ -43636,6 +43651,7 @@ var render = function() {
           ],
           staticClass: "status",
           attrs: {
+            disabled: _vm.limitedClass,
             name: "tweet",
             placeholder: "Type Something here!",
             rows: "4",
@@ -43657,7 +43673,9 @@ var render = function() {
         _vm._m(0),
         _vm._v(" "),
         _c("div", { staticClass: "t-fo-right" }, [
-          _c("span", { attrs: { id: "count" } }, [_vm._v("140")]),
+          _c("span", { attrs: { id: "count" } }, [
+            _vm._v(_vm._s(_vm.charactersLeft))
+          ]),
           _vm._v(" "),
           _c("input", {
             attrs: { type: "button", name: "tweet", value: "tweet" },
@@ -43838,14 +43856,22 @@ var url = 'http://localhost:8000/';
     },
     mounted: function mounted() {},
     created: function created() {
-        var _this = this;
+        this.fetchAll();
+    },
 
-        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(url + 'tweets').then(function (res) {
-            _this.tweets = res.data;
-            console.log(_this.tweets);
-        }).catch(function (error) {
-            console.log(error);
-        });
+    methods: {
+        test: function test() {
+            console.log('testing');
+        },
+        fetchAll: function fetchAll() {
+            var _this = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(url + 'tweets').then(function (res) {
+                _this.tweets = res.data;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
     }
 });
 

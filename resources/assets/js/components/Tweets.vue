@@ -79,14 +79,21 @@
 
         },
         created() {
-            axios.get(url + 'tweets')
-                .then(res => {
-                    this.tweets = res.data;
-                    console.log(this.tweets);
-                })
-                .catch(error => {
-                    console.log(error)
-                });
+            this.fetchAll();
         },
+        methods: {
+            test(){
+                console.log('testing');
+            },
+            fetchAll() {
+                axios.get(url + 'tweets')
+                    .then(res => {
+                        this.tweets = res.data;
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    });
+            }
+        }
     }
 </script>

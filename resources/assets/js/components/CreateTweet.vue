@@ -9,6 +9,7 @@
             </div>
             <div class="tweet-body">
                 <textarea
+                        :disabled="limitedClass"
                         class="status"
                         name="tweet"
                         v-model="tweet"
@@ -32,7 +33,7 @@
                     </ul>
                 </div>
                 <div class="t-fo-right">
-                    <span id="count">140</span>
+                    <span id="count">{{ charactersLeft }}</span>
                     <input type="button" name="tweet" value="tweet" @click="onSubmit()"/>
                 </div>
             </div>
@@ -52,6 +53,20 @@
         },
         mounted() {
 
+        },
+        computed: {
+            charactersLeft(){
+                return (140 - this.tweet.length);
+            },
+            limitedClass(){
+                let char = this.tweet.length;
+
+                if (char.length === 140) {
+                    return true;
+                }
+
+//                return (140 - char);
+            }
         },
         methods: {
             onSubmit() {
