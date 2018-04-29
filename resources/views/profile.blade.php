@@ -55,11 +55,7 @@
                 </ul>
                 @if(Auth::id() !== $user->id)
                     <div class="edit-button">
-                    <span>
-                        <button class="f-btn follow-btn" data-follow="user_id" data-user="user_id">
-                            <i class="fa fa-user-plus"></i> Follow
-                        </button>
-                    </span>
+                        <follow :id="{{ Auth::id() }}" :another="{{ $user->id }}"></follow>
                     </div>
                 @endif
             </div>

@@ -25,6 +25,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     // profile
     Route::get('users/{username}', 'HomeController@profile')->name('profile');
+
+    // Follow un follow
+    Route::get('check-follow/{whom}', 'FollowController@checkFollow');
+    Route::post('follow/{whom}', 'FollowController@follow');
+    Route::post('unfollow/{whom}', 'FollowController@unfollow');
 });
 
 Auth::routes();

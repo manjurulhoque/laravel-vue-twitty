@@ -1130,8 +1130,12 @@ module.exports = __webpack_require__(51);
 
 /***/ }),
 /* 13 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -1152,6 +1156,9 @@ Vue.prototype.$url = 'http://localhost:8000/';
 Vue.component('example-component', __webpack_require__(40));
 Vue.component('side-bar', __webpack_require__(43));
 Vue.component('create-tweet', __webpack_require__(11));
+Vue.component('follow', __webpack_require__(65));
+
+
 
 var app = new Vue({
   el: '#app',
@@ -44401,6 +44408,151 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-1bbdfa0e", module.exports)
+  }
+}
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(66)
+/* template */
+var __vue_template__ = __webpack_require__(67)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Follow.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2d0f8d68", Component.options)
+  } else {
+    hotAPI.reload("data-v-2d0f8d68", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 66 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['id', 'another'],
+    data: function data() {
+        return {
+            following: false
+        };
+    },
+    mounted: function mounted() {
+        this.checkFollowing();
+    },
+
+    methods: {
+        checkFollowing: function checkFollowing() {
+            var _this = this;
+
+            axios.get(this.$url + ('check-follow/' + this.another)).then(function (res) {
+                if (res.data) {
+                    _this.following = true;
+                } else {
+                    _this.following = false;
+                }
+            }).catch(function (err) {
+                console.log(err);
+            });
+        },
+        follow: function follow() {
+            var _this2 = this;
+
+            if (!this.following) {
+                console.log('following');
+                axios.post(this.$url + ('follow/' + this.another)).then(function (res) {
+                    _this2.following = true;
+                }).catch(function (err) {
+                    console.log(err);
+                });
+            } else {
+                console.log('unfollowing');
+                axios.post(this.$url + ('unfollow/' + this.another)).then(function (res) {
+                    _this2.following = false;
+                }).catch(function (err) {
+                    console.log(err);
+                });
+            }
+        }
+    }
+});
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("span", [
+    _c(
+      "button",
+      {
+        staticClass: "f-btn",
+        class: _vm.following ? "following-btn" : "follow-btn",
+        attrs: { "data-follow": "user_id", "data-user": "user_id" },
+        on: {
+          click: function($event) {
+            _vm.follow()
+          }
+        }
+      },
+      [_c("i", { staticClass: "fa fa-user-plus" }), _vm._v(" Follow\n    ")]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2d0f8d68", module.exports)
   }
 }
 

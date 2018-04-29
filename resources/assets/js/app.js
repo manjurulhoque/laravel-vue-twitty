@@ -19,6 +19,9 @@ Vue.prototype.$url = 'http://localhost:8000/';
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('side-bar', require('./components/Sidebar.vue'));
 Vue.component('create-tweet', require('./components/CreateTweet.vue'));
+Vue.component('follow', require('./components/Follow.vue'));
+
+import axios from 'axios';
 
 const app = new Vue({
     el: '#app',
