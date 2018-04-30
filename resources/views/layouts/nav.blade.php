@@ -50,7 +50,7 @@
 
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="">
+                                <a href="{{ route('profile.user', Auth::user()->username) }}">
                                     {{ Auth::user()->username }}
                                 </a>
                             </li>
