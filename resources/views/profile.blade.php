@@ -16,16 +16,16 @@
                 <ul style="margin-left: 20%;">
                     <li>
                         <div class="n-head">
-                            TWEETS
+                            <a href="#">TWEETS</a>
                         </div>
                         <div class="n-bottom">
                             {{ $user->tweets->count() }}
                         </div>
                     </li>
                     <li>
-                        <a href="<?php echo $user->username; ?>/following">
+                        <a href="{{ $user->username }}/following">
                             <div class="n-head">
-                                <a href="<?php echo $user->username; ?>/following">FOLLOWING</a>
+                                <a href="{{ $user->username }}/following">FOLLOWING</a>
                             </div>
                             <div class="n-bottom">
                                 <span class="count-following">{{ $user->following }}</span>
@@ -168,6 +168,7 @@
             <div class="in-center">
                 <div class="in-center-wrap">
                     <!--Tweet SHOW WRAPER-->
+                    <uset-tweet :tweets="{{ Auth::user()->tweets }}" :user="{{ Auth::user() }}"></uset-tweet>
                     <!--Tweet SHOW WRAPER END-->
                 </div><!-- in left wrap-->
                 <div class="popupTweet"></div>
