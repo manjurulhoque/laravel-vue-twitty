@@ -1156,7 +1156,7 @@ Vue.prototype.$url = 'http://localhost:8000/';
 Vue.component('example-component', __webpack_require__(40));
 Vue.component('side-bar', __webpack_require__(43));
 Vue.component('create-tweet', __webpack_require__(11));
-Vue.component('follow', __webpack_require__(57));
+Vue.component('follow', __webpack_require__(83));
 Vue.component('user-tweet', __webpack_require__(60));
 Vue.component('user-following', __webpack_require__(74));
 Vue.component('user-follower', __webpack_require__(77));
@@ -43403,6 +43403,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__CreateTweet_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__CreateTweet_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Tweets_vue__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Tweets_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Tweets_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__follow_WhoToFollow_vue__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__follow_WhoToFollow_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__follow_WhoToFollow_vue__);
 //
 //
 //
@@ -43511,23 +43513,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 
 
 
@@ -43539,7 +43525,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     components: {
         CreateTweet: __WEBPACK_IMPORTED_MODULE_0__CreateTweet_vue___default.a,
-        allTweets: __WEBPACK_IMPORTED_MODULE_1__Tweets_vue___default.a
+        allTweets: __WEBPACK_IMPORTED_MODULE_1__Tweets_vue___default.a,
+        WhoToFollow: __WEBPACK_IMPORTED_MODULE_2__follow_WhoToFollow_vue___default.a
     },
     mounted: function mounted() {
         console.log(this.total_tweets);
@@ -44625,7 +44612,14 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _vm._m(1)
+        _c("div", { staticClass: "in-right" }, [
+          _c(
+            "div",
+            { staticClass: "in-right-wrap text-center" },
+            [_c("who-to-follow")],
+            1
+          )
+        ])
       ])
     ])
   ])
@@ -44641,37 +44635,6 @@ var staticRenderFns = [
         attrs: { id: "loader", src: "assets/images/loading.svg" }
       })
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "in-right" }, [
-      _c("div", { staticClass: "in-right-wrap" }, [
-        _c("div", { staticClass: "follow-wrap" }, [
-          _c("div", { staticClass: "follow-inner" }, [
-            _c("div", { staticClass: "follow-title" }, [
-              _c("h3", [_vm._v("Who to follow")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "follow-body" }, [
-              _c("div", { staticClass: "follow-img" }, [
-                _c("img", { attrs: { src: "PROFILE-IMAGE" } })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "follow-content" }, [
-                _c("div", { staticClass: "fo-co-head" }, [
-                  _c("a", { attrs: { href: "PROFILE-LINK" } }, [
-                    _vm._v("ScreenName")
-                  ]),
-                  _c("span", [_vm._v("@USERNAME")])
-                ])
-              ])
-            ])
-          ])
-        ])
-      ])
-    ])
   }
 ]
 render._withStripped = true
@@ -44684,151 +44647,9 @@ if (false) {
 }
 
 /***/ }),
-/* 57 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(58)
-/* template */
-var __vue_template__ = __webpack_require__(59)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\Follow.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2d0f8d68", Component.options)
-  } else {
-    hotAPI.reload("data-v-2d0f8d68", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 58 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['id', 'another'],
-    data: function data() {
-        return {
-            following: false
-        };
-    },
-    mounted: function mounted() {
-        this.checkFollowing();
-    },
-
-    methods: {
-        checkFollowing: function checkFollowing() {
-            var _this = this;
-
-            axios.get(this.$url + ('check-follow/' + this.another)).then(function (res) {
-                if (res.data) {
-                    _this.following = true;
-                } else {
-                    _this.following = false;
-                }
-            }).catch(function (err) {
-                console.log(err);
-            });
-        },
-        follow: function follow() {
-            var _this2 = this;
-
-            if (!this.following) {
-                console.log('following');
-                axios.post(this.$url + ('follow/' + this.another)).then(function (res) {
-                    _this2.following = true;
-                }).catch(function (err) {
-                    console.log(err);
-                });
-            } else {
-                console.log('unfollowing');
-                axios.post(this.$url + ('unfollow/' + this.another)).then(function (res) {
-                    _this2.following = false;
-                }).catch(function (err) {
-                    console.log(err);
-                });
-            }
-        }
-    }
-});
-
-/***/ }),
-/* 59 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("span", [
-    _c(
-      "button",
-      {
-        staticClass: "f-btn",
-        class: _vm.following ? "following-btn" : "follow-btn",
-        attrs: { "data-follow": "user_id", "data-user": "user_id" },
-        on: {
-          click: function($event) {
-            _vm.follow()
-          }
-        }
-      },
-      [_c("i", { staticClass: "fa fa-user-plus" }), _vm._v(" Follow\n    ")]
-    )
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-2d0f8d68", module.exports)
-  }
-}
-
-/***/ }),
+/* 57 */,
+/* 58 */,
+/* 59 */,
 /* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -45327,6 +45148,328 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-99ce3100", module.exports)
+  }
+}
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(81)
+/* template */
+var __vue_template__ = __webpack_require__(82)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\follow\\WhoToFollow.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-fc114f94", Component.options)
+  } else {
+    hotAPI.reload("data-v-fc114f94", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 81 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Follow_vue__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Follow_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Follow_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            users: {}
+        };
+    },
+
+    components: {
+        Follow: __WEBPACK_IMPORTED_MODULE_0__Follow_vue___default.a
+    },
+    mounted: function mounted() {
+        this.whoToFollow();
+    },
+
+    methods: {
+        whoToFollow: function whoToFollow() {
+            var _this = this;
+
+            axios.get(this.$url + 'who-to-follow').then(function (res) {
+                console.log(res);
+                _this.users = res.data;
+            }).catch(function (err) {
+                console.log(err);
+            });
+        },
+        getPic: function getPic(src) {
+            return '../../' + src;
+        }
+    }
+});
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._l(_vm.users, function(user, index) {
+        return _c("div", { staticClass: "follow-wrap" }, [
+          _c("div", { staticClass: "follow-inner" }, [
+            _c("div", { staticClass: "follow-body" }, [
+              _c("div", { staticClass: "follow-img" }, [
+                _c("img", { attrs: { src: _vm.getPic(user.profile_image) } })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "follow-content" }, [
+                _c("div", { staticClass: "fo-co-head" }, [
+                  _c("a", { attrs: { href: "PROFILE-LINK" } }, [
+                    _vm._v(_vm._s(user.screen_name))
+                  ]),
+                  _c("span", [_vm._v(" @" + _vm._s(user.username))])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "edit-button" },
+                  [_c("follow", { attrs: { id: 1, another: 1 } })],
+                  1
+                )
+              ])
+            ])
+          ])
+        ])
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "follow-title" }, [
+      _c("h3", [_vm._v("Who to follow")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-fc114f94", module.exports)
+  }
+}
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(84)
+/* template */
+var __vue_template__ = __webpack_require__(85)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\follow\\Follow.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-eee63ad6", Component.options)
+  } else {
+    hotAPI.reload("data-v-eee63ad6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 84 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['id', 'another'],
+    data: function data() {
+        return {
+            following: false
+        };
+    },
+    mounted: function mounted() {
+        this.checkFollowing();
+    },
+
+    methods: {
+        checkFollowing: function checkFollowing() {
+            var _this = this;
+
+            axios.get(this.$url + ('check-follow/' + this.another)).then(function (res) {
+                if (res.data) {
+                    _this.following = true;
+                } else {
+                    _this.following = false;
+                }
+            }).catch(function (err) {
+                console.log(err);
+            });
+        },
+        follow: function follow() {
+            var _this2 = this;
+
+            if (!this.following) {
+                console.log('following');
+                axios.post(this.$url + ('follow/' + this.another)).then(function (res) {
+                    _this2.following = true;
+                }).catch(function (err) {
+                    console.log(err);
+                });
+            } else {
+                console.log('unfollowing');
+                axios.post(this.$url + ('unfollow/' + this.another)).then(function (res) {
+                    _this2.following = false;
+                }).catch(function (err) {
+                    console.log(err);
+                });
+            }
+        }
+    }
+});
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("span", [
+    _c(
+      "button",
+      {
+        staticClass: "f-btn",
+        class: _vm.following ? "following-btn" : "follow-btn",
+        attrs: { "data-follow": "user_id", "data-user": "user_id" },
+        on: {
+          click: function($event) {
+            _vm.follow()
+          }
+        }
+      },
+      [_c("i", { staticClass: "fa fa-user-plus" }), _vm._v(" Follow\n    ")]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-eee63ad6", module.exports)
   }
 }
 

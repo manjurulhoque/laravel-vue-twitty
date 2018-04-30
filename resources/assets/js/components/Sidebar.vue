@@ -90,27 +90,10 @@
                 </div><!-- in center end -->
 
                 <div class="in-right">
-                    <div class="in-right-wrap">
+                    <div class="in-right-wrap text-center">
 
                         <!--Who To Follow-->
-                        <div class="follow-wrap">
-                            <div class="follow-inner">
-                                <div class="follow-title"><h3>Who to follow</h3></div>
-
-                                <div class="follow-body">
-                                    <div class="follow-img">
-                                        <img src="PROFILE-IMAGE"/>
-                                    </div>
-                                    <div class="follow-content">
-                                        <div class="fo-co-head">
-                                            <a href="PROFILE-LINK">ScreenName</a><span>@USERNAME</span>
-                                        </div>
-                                        <!-- FOLLOW BUTTON -->
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
+                        <who-to-follow></who-to-follow>
                         <!--Who To Follow-->
 
                     </div><!-- in left wrap-->
@@ -126,6 +109,7 @@
 <script>
     import CreateTweet from './CreateTweet.vue';
     import Tweets from './Tweets.vue';
+    import WhoToFollow from './follow/WhoToFollow.vue';
     export default {
         props: ['user', 'total_tweets'],
         data() {
@@ -133,7 +117,8 @@
         },
         components: {
             CreateTweet,
-            allTweets: Tweets
+            allTweets: Tweets,
+            WhoToFollow
         },
         mounted() {
             console.log(this.total_tweets);

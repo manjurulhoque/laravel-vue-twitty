@@ -51,4 +51,28 @@ class FollowController extends Controller
 
         return response()->json(['message' => 'unfollowing'], 201);
     }
+
+    public function who()
+    {
+        $users = User::all()->except(Auth::id())->random(3);
+        $whoms = Follow::where('user_id', Auth::id())->get();
+        $who = array();
+        if (!$whoms->isEmpty()) {
+            $whom_users = array();
+            foreach ($whoms as $whom) {
+                $user = User::where('id', $whom->whom_follow)->pluck('id')->first();
+                array_push($whom_users, $user);
+            }
+
+            foreach ($whom_users as $whom_user) {
+                foreach ($users as $user) {
+                    if ($whom_user != $user->id) {
+                        array_push($who, $user);
+                    }
+                }
+            }
+            return response()->json($who, 201);
+        }
+        return response()->json($users, 201);
+    }
 }
