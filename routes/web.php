@@ -24,9 +24,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('check-like/{id}', 'LikeController@checkLike');
 
     // profile
-    Route::get('users/{username}', 'HomeController@profile')->name('profile');
+    Route::get('users/{username}', 'UserController@profile')->name('profile');
+    Route::get('users/{username}/following', 'UserController@profile')->name('profile');
+    Route::get('users/{username}/followers', 'UserController@profile')->name('profile');
 
-    // Follow un follow
+    // Follow un-follow
     Route::get('check-follow/{whom}', 'FollowController@checkFollow');
     Route::post('follow/{whom}', 'FollowController@follow');
     Route::post('unfollow/{whom}', 'FollowController@unfollow');

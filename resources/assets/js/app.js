@@ -20,7 +20,9 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 Vue.component('side-bar', require('./components/Sidebar.vue'));
 Vue.component('create-tweet', require('./components/CreateTweet.vue'));
 Vue.component('follow', require('./components/Follow.vue'));
-Vue.component('uset-tweet', require('./components/UserTweet.vue'));
+Vue.component('user-tweet', require('./components/UserTweet.vue'));
+Vue.component('user-following', require('./components/UserFollowing.vue'));
+Vue.component('user-follower', require('./components/UserFollower.vue'));
 
 import axios from 'axios';
 

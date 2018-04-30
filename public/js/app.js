@@ -1125,7 +1125,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(60);
+module.exports = __webpack_require__(63);
 
 
 /***/ }),
@@ -1157,7 +1157,9 @@ Vue.component('example-component', __webpack_require__(40));
 Vue.component('side-bar', __webpack_require__(43));
 Vue.component('create-tweet', __webpack_require__(11));
 Vue.component('follow', __webpack_require__(57));
-Vue.component('uset-tweet', __webpack_require__(71));
+Vue.component('user-tweet', __webpack_require__(60));
+Vue.component('user-following', __webpack_require__(74));
+Vue.component('user-follower', __webpack_require__(77));
 
 
 
@@ -43794,7 +43796,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Like_vue__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Like_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Like_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Retweet_vue__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Retweet_vue__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Retweet_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Retweet_vue__);
 //
 //
@@ -43901,7 +43903,7 @@ var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(50)
 /* template */
-var __vue_template__ = __webpack_require__(54)
+var __vue_template__ = __webpack_require__(51)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -44043,12 +44045,134 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "t-s-f-right" }, [
+    _c("ul", [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("li", [
+        _c(
+          "button",
+          {
+            staticClass: "retweet",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                _vm.showModal()
+              }
+            }
+          },
+          [_vm._m(1)]
+        )
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _c(
+          "button",
+          {
+            class: _vm.liked ? "unlike-btn" : "like-btn",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                _vm.like()
+              }
+            }
+          },
+          [
+            _c("a", { attrs: { href: "#" } }, [
+              _c(
+                "i",
+                {
+                  staticClass: "fa",
+                  class: _vm.liked ? "fa-heart" : "fa-heart-o",
+                  attrs: { "aria-hidden": "true" }
+                },
+                [
+                  _vm.total
+                    ? _c("span", { staticClass: "likesCounter" }, [
+                        _vm._v(_vm._s(_vm.total))
+                      ])
+                    : _vm._e()
+                ]
+              )
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _vm._m(2)
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("button", [
+        _c("a", { attrs: { href: "#" } }, [
+          _c("i", {
+            staticClass: "fa fa-share",
+            attrs: { "aria-hidden": "true" }
+          })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#" } }, [
+      _c("i", {
+        staticClass: "fa fa-retweet",
+        attrs: { "aria-hidden": "true" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("a", { staticClass: "more", attrs: { href: "#" } }, [
+        _c("i", {
+          staticClass: "fa fa-ellipsis-h",
+          attrs: { "aria-hidden": "true" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("ul", [
+        _c("li", [
+          _c("label", { staticClass: "deleteTweet" }, [_vm._v("Delete Tweet")])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1bbdfa0e", module.exports)
+  }
+}
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(52)
+var __vue_script__ = __webpack_require__(53)
 /* template */
-var __vue_template__ = __webpack_require__(53)
+var __vue_template__ = __webpack_require__(54)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -44087,7 +44211,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -44157,7 +44281,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -44286,128 +44410,6 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-5cdeb012", module.exports)
-  }
-}
-
-/***/ }),
-/* 54 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "t-s-f-right" }, [
-    _c("ul", [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("li", [
-        _c(
-          "button",
-          {
-            staticClass: "retweet",
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                _vm.showModal()
-              }
-            }
-          },
-          [_vm._m(1)]
-        )
-      ]),
-      _vm._v(" "),
-      _c("li", [
-        _c(
-          "button",
-          {
-            class: _vm.liked ? "unlike-btn" : "like-btn",
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                _vm.like()
-              }
-            }
-          },
-          [
-            _c("a", { attrs: { href: "#" } }, [
-              _c(
-                "i",
-                {
-                  staticClass: "fa",
-                  class: _vm.liked ? "fa-heart" : "fa-heart-o",
-                  attrs: { "aria-hidden": "true" }
-                },
-                [
-                  _vm.total
-                    ? _c("span", { staticClass: "likesCounter" }, [
-                        _vm._v(_vm._s(_vm.total))
-                      ])
-                    : _vm._e()
-                ]
-              )
-            ])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _vm._m(2)
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [
-      _c("button", [
-        _c("a", { attrs: { href: "#" } }, [
-          _c("i", {
-            staticClass: "fa fa-share",
-            attrs: { "aria-hidden": "true" }
-          })
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#" } }, [
-      _c("i", {
-        staticClass: "fa fa-retweet",
-        attrs: { "aria-hidden": "true" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [
-      _c("a", { staticClass: "more", attrs: { href: "#" } }, [
-        _c("i", {
-          staticClass: "fa fa-ellipsis-h",
-          attrs: { "aria-hidden": "true" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("ul", [
-        _c("li", [
-          _c("label", { staticClass: "deleteTweet" }, [_vm._v("Delete Tweet")])
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-1bbdfa0e", module.exports)
   }
 }
 
@@ -44828,30 +44830,14 @@ if (false) {
 
 /***/ }),
 /* 60 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 61 */,
-/* 62 */,
-/* 63 */,
-/* 64 */,
-/* 65 */,
-/* 66 */,
-/* 67 */,
-/* 68 */,
-/* 69 */,
-/* 70 */,
-/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(72)
+var __vue_script__ = __webpack_require__(61)
 /* template */
-var __vue_template__ = __webpack_require__(73)
+var __vue_template__ = __webpack_require__(62)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -44890,7 +44876,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 72 */
+/* 61 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -44956,7 +44942,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 73 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -45028,6 +45014,319 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-21dba8ff", module.exports)
+  }
+}
+
+/***/ }),
+/* 63 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */,
+/* 74 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(75)
+/* template */
+var __vue_template__ = __webpack_require__(76)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\UserFollowing.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7fcc1a1f", Component.options)
+  } else {
+    hotAPI.reload("data-v-7fcc1a1f", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 75 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['following'],
+    mounted: function mounted() {},
+
+    methods: {
+        getPic: function getPic(src) {
+            return '../../' + src;
+        }
+    }
+});
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "follow-unfollow-box" }, [
+    _c("div", { staticClass: "follow-unfollow-inner" }, [
+      _c("div", { staticClass: "follow-background" }, [
+        _c("img", { attrs: { src: _vm.getPic(_vm.following.profile_cover) } })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "follow-person-button-img" }, [
+        _c("div", { staticClass: "follow-person-img" }, [
+          _c("img", { attrs: { src: _vm.getPic(_vm.following.profile_image) } })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "follow-person-button" })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "follow-person-bio" }, [
+        _c("div", { staticClass: "follow-person-name" }, [
+          _c("a", { attrs: { href: "PROFILE-LINK" } }, [
+            _vm._v(_vm._s(_vm.following.screen_name))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "follow-person-tname" }, [
+          _c("a", { attrs: { href: "PROFILE-LINK" } }, [
+            _vm._v(_vm._s(_vm.following.username))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "follow-person-dis" }, [
+          _vm._v(
+            "\n                " + _vm._s(_vm.following.bio) + "\n            "
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7fcc1a1f", module.exports)
+  }
+}
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(78)
+/* template */
+var __vue_template__ = __webpack_require__(79)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\UserFollower.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-99ce3100", Component.options)
+  } else {
+    hotAPI.reload("data-v-99ce3100", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 78 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['follower'],
+    mounted: function mounted() {},
+
+    methods: {
+        getPic: function getPic(src) {
+            return '../../' + src;
+        }
+    }
+});
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "follow-unfollow-box" }, [
+    _c("div", { staticClass: "follow-unfollow-inner" }, [
+      _c("div", { staticClass: "follow-background" }, [
+        _c("img", { attrs: { src: _vm.getPic(_vm.follower.profile_cover) } })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "follow-person-button-img" }, [
+        _c("div", { staticClass: "follow-person-img" }, [
+          _c("img", { attrs: { src: _vm.getPic(_vm.follower.profile_image) } })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "follow-person-button" })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "follow-person-bio" }, [
+        _c("div", { staticClass: "follow-person-name" }, [
+          _c("a", { attrs: { href: "PROFILE-LINK" } }, [
+            _vm._v(_vm._s(_vm.follower.screen_name))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "follow-person-tname" }, [
+          _c("a", { attrs: { href: "PROFILE-LINK" } }, [
+            _vm._v(_vm._s(_vm.follower.username))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "follow-person-dis" }, [
+          _vm._v(
+            "\n                " + _vm._s(_vm.follower.bio) + "\n            "
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-99ce3100", module.exports)
   }
 }
 

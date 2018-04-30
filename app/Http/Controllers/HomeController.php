@@ -11,11 +11,4 @@ class HomeController extends Controller
     {
         return view('home');
     }
-
-    public function profile($username)
-    {
-        $user = User::where('username', $username)->first();
-
-        return view('profile', compact('user'));
-    }
 }

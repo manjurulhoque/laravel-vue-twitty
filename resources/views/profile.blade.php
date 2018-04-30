@@ -23,9 +23,9 @@
                         </div>
                     </li>
                     <li>
-                        <a href="{{ $user->username }}/following">
+                        <a href="following">
                             <div class="n-head">
-                                <a href="{{ $user->username }}/following">FOLLOWING</a>
+                                <a href="following">FOLLOWING</a>
                             </div>
                             <div class="n-bottom">
                                 <span class="count-following">{{ $user->following }}</span>
@@ -33,9 +33,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ $user->username }}/followers">
+                        <a href="followers">
                             <div class="n-head">
-                                FOLLOWERS
+                                <a href="followers">FOLLOWERS</a>
                             </div>
                             <div class="n-bottom">
                                 <span class="count-followers">{{ $user->followers }}</span>
@@ -152,24 +152,30 @@
                                     </ul>
                                 </div>
                             </div>
-
                         </div>
                         <!--PROFILE INFO INNER END-->
-
                     </div>
                     <!--PROFILE INFO WRAPPER END-->
-
                 </div>
                 <!-- in left wrap-->
-
             </div>
             <!-- in left end-->
 
             <div class="in-center">
                 <div class="in-center-wrap">
                     <!--Tweet SHOW WRAPER-->
-                    <uset-tweet :tweets="{{ Auth::user()->tweets }}" :user="{{ Auth::user() }}"></uset-tweet>
-                    <!--Tweet SHOW WRAPER END-->
+                    @if(request()->is('users/*/following'))
+                        @foreach($followings as $following)
+                            <user-following :following="{{ $following }}"></user-following>
+                        @endforeach
+                    @elseif(request()->is('users/*/followers'))
+                        @foreach($followers as $follower)
+                            <user-follower :follower="{{ $follower }}"></user-follower>
+                        @endforeach
+                    @else
+                        <user-tweet :tweets="{{ $user->tweets }}" :user="{{ Auth::user() }}"></user-tweet>
+                    @endif
+                <!--Tweet SHOW WRAPER END-->
                 </div><!-- in left wrap-->
                 <div class="popupTweet"></div>
             </div>

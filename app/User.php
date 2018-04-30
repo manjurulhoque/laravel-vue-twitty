@@ -37,4 +37,26 @@ class User extends Authenticatable
     {
         return $this->hasMany(Like::class);
     }
+
+    public function followings()
+    {
+        $users = array();
+        $followings = Follow::where('user_id', $this->id)->get();
+        foreach ($followings as $following){
+            $user = User::find($following->whom_follow);
+            array_push($users, $user);
+        }
+        return $users;
+    }
+
+    public function followers()
+    {
+        $users = array();
+        $followings = Follow::where('whom_follow', $this->id)->get();
+        foreach ($followings as $following){
+            $user = User::find($following->user_id);
+            array_push($users, $user);
+        }
+        return $users;
+    }
 }
