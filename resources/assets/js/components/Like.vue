@@ -9,7 +9,7 @@
                 </button>
             </li>
             <li>
-                <button>
+                <button class="retweet" @click.prevent="showModal()">
                     <a href="#">
                         <i class="fa fa-retweet" aria-hidden="true"></i>
                     </a>
@@ -46,10 +46,16 @@
                 total: ''
             }
         },
+        components: {
+
+        },
         mounted() {
             this.checkingLike();
         },
         methods: {
+            showModal() {
+                this.$parent.showPopup();
+            },
             like() {
                 if (!this.liked) {
                     axios.post(this.$url + `like/${this.tweet_id}`)

@@ -38,7 +38,7 @@
                                                 TWEETS
                                             </div>
                                             <div class="num-body">
-                                                10
+                                                {{ total_tweets }}
                                             </div>
                                         </div>
                                         <div class="num-box">
@@ -46,7 +46,7 @@
                                                 FOLLOWING
                                             </div>
                                             <div class="num-body">
-                                                <span class="count-following">10</span>
+                                                <span class="count-following">{{ user.following }}</span>
                                             </div>
                                         </div>
                                         <div class="num-box">
@@ -54,7 +54,7 @@
                                                 FOLLOWERS
                                             </div>
                                             <div class="num-body">
-                                                <span class="count-followers">10</span>
+                                                <span class="count-followers">{{ user.followers }}</span>
                                             </div>
                                         </div>
                                     </div><!-- mumber wrapper-->
@@ -127,7 +127,7 @@
     import CreateTweet from './CreateTweet.vue';
     import Tweets from './Tweets.vue';
     export default {
-        props: ['user'],
+        props: ['user', 'total_tweets'],
         data() {
             return {}
         },
@@ -136,7 +136,7 @@
             allTweets: Tweets
         },
         mounted() {
-
+            console.log(this.total_tweets);
         }
     }
 </script>

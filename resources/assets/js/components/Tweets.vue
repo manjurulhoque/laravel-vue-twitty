@@ -4,11 +4,11 @@
             <div class="t-show-wrap">
                 <div class="t-show-inner">
                     <!-- this div is for retweet icon
-                    <div class="t-show-banner">
-                        <div class="t-show-banner-inner">
-                            <span><i class="fa fa-retweet" aria-hidden="true"></i></span><span>Screen-Name Retweeted</span>
+                        <div class="t-show-banner">
+                            <div class="t-show-banner-inner">
+                                <span><i class="fa fa-retweet" aria-hidden="true"></i></span><span>Screen-Name Retweeted</span>
+                            </div>
                         </div>
-                    </div>
                     -->
                     <div class="t-show-popup">
                         <div class="t-show-head">
@@ -43,27 +43,30 @@
                     </div>
                     <div class="t-show-footer">
                         <!--like vue-->
-                        <like :id="tweet.id" :tweet_id="tweet.id"></like>
+                        <like :id="tweet.id" :tweet_id="tweet.id" :show-modal="showPopup"></like>
                     </div>
                 </div>
             </div>
+            <retweet v-if="showModal" :tweet="tweet"></retweet>
         </div>
     </div>
 </template>
 
 <script>
-//    const url = 'http://localhost:8000/';
     import axios from 'axios';
     import Like from './Like.vue';
+    import Retweet from './Retweet.vue';
     export default {
         data() {
             return {
                 tweets: {},
-                result: ''
+                result: '',
+                showModal: false
             }
         },
         components: {
-            Like
+            Like,
+            Retweet
         },
         mounted() {
             //console.log(this.tweets);
@@ -73,10 +76,8 @@
         },
         computed: {},
         methods: {
-            checkingLike(id){
-                //let result = ''
-
-                return vm.result;
+            showPopup() {
+                this.showModal = true;
             },
             fetchAll() {
                 // here $url is global instance is defined in app.js
