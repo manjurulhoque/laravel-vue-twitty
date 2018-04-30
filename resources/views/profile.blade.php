@@ -16,7 +16,7 @@
                 <ul style="margin-left: 20%;">
                     <li>
                         <div class="n-head">
-                            <a href="#">TWEETS</a>
+                            <a href="{{ route('profile.user', $user->username) }}">TWEETS</a>
                         </div>
                         <div class="n-bottom">
                             {{ $user->tweets->count() }}
@@ -48,7 +48,7 @@
                                 LIKES
                             </div>
                             <div class="n-bottom">
-                                0
+                                {{ $user->likes->where('like', 1)->count() }}
                             </div>
                         </a>
                     </li>
@@ -56,6 +56,14 @@
                 @if(Auth::id() !== $user->id)
                     <div class="edit-button">
                         <follow :id="{{ Auth::id() }}" :another="{{ $user->id }}"></follow>
+                    </div>
+                @else
+                    <div class="edit-button">
+                        <a href="#">
+                            <button class="f-btn follow-btn" data-follow="user_id" data-user="user_id">
+                                <i class="fa fa-user-plus"></i> Edit Profile
+                            </button>
+                        </a>
                     </div>
                 @endif
             </div>
@@ -174,7 +182,7 @@
                         @endforeach
                     @else
                         <user-tweet :tweets="{{ $user->tweets }}" :user="{{ Auth::user() }}"></user-tweet>
-                    @endif
+                @endif
                 <!--Tweet SHOW WRAPER END-->
                 </div><!-- in left wrap-->
                 <div class="popupTweet"></div>

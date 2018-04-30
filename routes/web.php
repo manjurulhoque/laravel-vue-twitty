@@ -24,7 +24,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('check-like/{id}', 'LikeController@checkLike');
 
     // profile
-    Route::get('users/{username}', 'UserController@profile')->name('profile');
+    Route::get('users/{username}', 'UserController@profile')->name('profile.user');
     Route::get('users/{username}/following', 'UserController@profile')->name('profile');
     Route::get('users/{username}/followers', 'UserController@profile')->name('profile');
 
