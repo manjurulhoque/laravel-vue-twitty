@@ -1201,6 +1201,7 @@ window.Vue = __webpack_require__(38);
 
 Vue.prototype.$url = 'http://localhost:8000/';
 Vue.component('example-component', __webpack_require__(41));
+Vue.component('search', __webpack_require__(86));
 Vue.component('side-bar', __webpack_require__(44));
 Vue.component('all-tweets', __webpack_require__(48));
 Vue.component('create-tweet', __webpack_require__(11));
@@ -46246,6 +46247,218 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-3a9100ae", module.exports)
+  }
+}
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(87)
+/* template */
+var __vue_template__ = __webpack_require__(88)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Search.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7b88e3df", Component.options)
+  } else {
+    hotAPI.reload("data-v-7b88e3df", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 87 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            search: '',
+            users: {}
+        };
+    },
+
+    methods: {
+        getPic: function getPic(src) {
+            return '../../' + src;
+        }
+    },
+    watch: {
+        search: function search(val) {
+            var _this = this;
+
+            if (val.length > 0) {
+                axios.get(this.$url + ('search/' + val)).then(function (res) {
+                    console.log(res);
+                    _this.users = res.data;
+                }).catch(function (err) {
+                    return console.log(err);
+                });
+            }
+        }
+    }
+});
+
+/***/ }),
+/* 88 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("form", { staticClass: "navbar-form", attrs: { action: "" } }, [
+    _c("div", { staticClass: "form-group" }, [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.search,
+            expression: "search"
+          }
+        ],
+        staticClass: "search form-control",
+        attrs: { type: "text", placeholder: "Search" },
+        domProps: { value: _vm.search },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.search = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("i", {
+        staticClass: "fa fa-search",
+        attrs: { "aria-hidden": "true" }
+      }),
+      _vm._v(" "),
+      _vm.users.length > 0
+        ? _c("div", { staticClass: "search-result" }, [
+            _c("div", { staticClass: "nav-right-down-wrap" }, [
+              _c(
+                "ul",
+                _vm._l(_vm.users, function(user, index) {
+                  return _c("li", [
+                    _c("div", { staticClass: "nav-right-down-inner" }, [
+                      _c("div", { staticClass: "nav-right-down-left" }, [
+                        _c("a", { attrs: { href: "users/" + user.username } }, [
+                          _c("img", { attrs: { src: user.profile_image } })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "nav-right-down-right" }, [
+                        _c(
+                          "div",
+                          { staticClass: "nav-right-down-right-headline" },
+                          [
+                            _c(
+                              "a",
+                              { attrs: { href: "users/" + user.username } },
+                              [
+                                _vm._v(
+                                  "\n                                        " +
+                                    _vm._s(user.screen_name) +
+                                    "\n                                    "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("span", [_vm._v("@ " + _vm._s(user.username))])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "nav-right-down-right-body" })
+                      ])
+                    ])
+                  ])
+                })
+              )
+            ])
+          ])
+        : _vm._e()
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7b88e3df", module.exports)
   }
 }
 

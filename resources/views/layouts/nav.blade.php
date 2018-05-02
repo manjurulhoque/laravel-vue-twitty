@@ -33,13 +33,7 @@
                 <li><a href="{{ route('register') }}">Register</a></li>
                 @else
                     <li>
-                        <form action="" class="navbar-form">
-                            <div class="form-group">
-                                <input type="text" placeholder="Search" class="search form-control"/>
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                                <div class="search-result"></div>
-                            </div>
-                        </form>
+                        <search></search>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"

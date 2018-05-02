@@ -17,6 +17,7 @@ window.Vue = require('vue');
 
 Vue.prototype.$url = 'http://localhost:8000/';
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('search', require('./components/Search.vue'));
 Vue.component('side-bar', require('./components/Sidebar.vue'));
 Vue.component('all-tweets', require('./components/Tweets.vue'));
 Vue.component('create-tweet', require('./components/CreateTweet.vue'));

@@ -62,4 +62,12 @@ class UserController extends Controller
 
         return response()->json($user, 201);
     }
+
+    public function search($user)
+    {
+        $users = User::where('username', 'like', '%' . $user . '%')
+            ->orWhere('screen_name', 'like', '%' . $user . '%')->get();
+
+        return response()->json($users, 201);
+    }
 }

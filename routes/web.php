@@ -37,6 +37,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     // who to follow
     Route::get('who-to-follow', 'FollowController@who')->name('who');
+
+    // user search
+    Route::get('search/{user}', 'UserController@search');
 });
 
 Auth::routes();
