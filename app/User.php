@@ -59,4 +59,9 @@ class User extends Authenticatable
         }
         return $users;
     }
+
+    public function retweets()
+    {
+        return $this->hasMany(Retweet::class);
+    }
 }

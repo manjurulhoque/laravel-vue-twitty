@@ -38,4 +38,9 @@ class Tweet extends Model
     {
         return (bool)$this::where('user_id', Auth::id())->where('id', $this->id)->first();
     }
+
+    public function retweets()
+    {
+        return $this->hasMany(Retweet::class);
+    }
 }
