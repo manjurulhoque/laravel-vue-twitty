@@ -13,7 +13,7 @@
                     <div class="t-show-popup">
                         <div class="t-show-head">
                             <div class="t-show-img">
-                                <img :src="user.profile_image"/>
+                                <img :src="getPic(user.profile_image)"/>
                             </div>
                             <div class="t-s-head-content">
                                 <div class="t-h-c-name">
@@ -57,6 +57,11 @@
         props: ['tweets', 'user'],
         mounted() {
 
+        },
+        methods: {
+            getPic(src) {
+                return '../../'+ src;
+            }
         }
     }
 </script>

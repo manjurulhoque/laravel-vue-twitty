@@ -18,11 +18,14 @@ window.Vue = require('vue');
 Vue.prototype.$url = 'http://localhost:8000/';
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('side-bar', require('./components/Sidebar.vue'));
+Vue.component('all-tweets', require('./components/Tweets.vue'));
 Vue.component('create-tweet', require('./components/CreateTweet.vue'));
 Vue.component('follow', require('./components/follow/Follow.vue'));
+Vue.component('who-to-follow', require('./components/follow/WhoToFollow.vue'));
 Vue.component('user-tweet', require('./components/UserTweet.vue'));
 Vue.component('user-following', require('./components/UserFollowing.vue'));
 Vue.component('user-follower', require('./components/UserFollower.vue'));
+Vue.component('user-profile-edit', require('./components/user/UserProfileEdit.vue'));
 
 import axios from 'axios';
 

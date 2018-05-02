@@ -25,6 +25,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     // profile
     Route::get('users/{username}', 'UserController@profile')->name('profile.user');
+    Route::get('users/{username}/edit', 'UserController@edit')->name('profile.edit');
+    Route::post('users/{username}/update', 'UserController@update')->name('profile.update');
     Route::get('users/{username}/following', 'UserController@profile')->name('profile');
     Route::get('users/{username}/followers', 'UserController@profile')->name('profile');
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Follow;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -38,5 +39,27 @@ class UserController extends Controller
     {
         $user = User::where('username', $username)->first();
         return response()->json($user->followings(), 201);
+    }
+
+    public function edit($username)
+    {
+        if (Auth::user()->username == $username) {
+            $user = User::where('username', $username)->first();
+            return view('profiles.profile-edit', compact('user'));
+        } else {
+            return redirect()->back();
+        }
+    }
+
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+        $user->website = $request->website;
+        $user->bio = $request->bio;
+        $user->screen_name = $request->screenName;
+        $user->country = $request->country;
+        $user->update();
+
+        return response()->json($user, 201);
     }
 }
