@@ -6,8 +6,9 @@
             </div>
             <div class="acc-right">
                 <input type="text" name="username" v-model="username"/>
-                <span>
+                <span v-if="userAvailable">
                     <!-- Username Error -->
+                    {{ userAvailable }}
                 </span>
             </div>
         </div>
@@ -42,7 +43,23 @@
         data() {
             return {
                 username: this.user.username,
-                email: this.user.email
+                email: this.user.email,
+                userAvailable: ''
+            }
+        },
+        watch: {
+            username(value) {
+                axios.get(this.$url + `check/${this.username}`)
+                    .then(res => {
+                        if (res.data.status === 0) {
+                            this.userAvailable = 'User available';
+                        } else {
+                            this.userAvailable = 'User is not available';
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
             }
         },
         methods: {

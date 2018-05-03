@@ -44,6 +44,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // user search
     Route::get('search/{user}', 'UserController@search');
+    Route::get('check/{user}', 'ProfileController@checkusername');
 });
 
 Auth::routes();

@@ -46554,27 +46554,44 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['user'],
     data: function data() {
         return {
             username: this.user.username,
-            email: this.user.email
+            email: this.user.email,
+            userAvailable: ''
         };
     },
 
+    watch: {
+        username: function username(value) {
+            var _this = this;
+
+            axios.get(this.$url + ('check/' + this.username)).then(function (res) {
+                if (res.data.status === 0) {
+                    _this.userAvailable = 'User available';
+                } else {
+                    _this.userAvailable = 'User is not available';
+                }
+            }).catch(function (err) {
+                console.log(err);
+            });
+        }
+    },
     methods: {
         onSubmit: function onSubmit() {
-            var _this = this;
+            var _this2 = this;
 
             axios.post(this.$url + 'settings/account', {
                 username: this.username,
                 email: this.email
             }).then(function (res) {
                 console.log(res);
-                _this.username = res.username;
-                _this.email = res.email;
+                _this2.username = res.username;
+                _this2.email = res.email;
             }).catch(function (err) {
                 return console.log(err);
             });
@@ -46629,7 +46646,15 @@ var render = function() {
             }
           }),
           _vm._v(" "),
-          _c("span")
+          _vm.userAvailable
+            ? _c("span", [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.userAvailable) +
+                    "\n            "
+                )
+              ])
+            : _vm._e()
         ])
       ]),
       _vm._v(" "),
