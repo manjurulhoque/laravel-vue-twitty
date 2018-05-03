@@ -26,6 +26,7 @@ Vue.component('who-to-follow', require('./components/follow/WhoToFollow.vue'));
 Vue.component('user-tweet', require('./components/UserTweet.vue'));
 Vue.component('user-following', require('./components/UserFollowing.vue'));
 Vue.component('user-follower', require('./components/UserFollower.vue'));
+Vue.component('account-setting', require('./components/user/UserAccount.vue'));
 Vue.component('user-profile-edit', require('./components/user/UserProfileEdit.vue'));
 
 import axios from 'axios';

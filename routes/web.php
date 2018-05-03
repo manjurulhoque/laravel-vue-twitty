@@ -30,6 +30,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('users/{username}/following', 'UserController@profile')->name('profile');
     Route::get('users/{username}/followers', 'UserController@profile')->name('profile');
 
+    // settings
+    Route::get('settings/account', 'ProfileController@account')->name('setting.account');
+    Route::post('settings/account', 'ProfileController@accountupdate')->name('setting.account');
+
     // Follow un-follow
     Route::get('check-follow/{whom}', 'FollowController@checkFollow');
     Route::post('follow/{whom}', 'FollowController@follow');

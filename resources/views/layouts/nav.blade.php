@@ -54,6 +54,11 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="{{ route('setting.account') }}">
+                                    Settings
+                                </a>
+                            </li>
+                            <li>
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

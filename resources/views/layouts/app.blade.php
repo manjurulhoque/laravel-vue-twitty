@@ -16,7 +16,7 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="wrapper">
         @include('layouts.nav')
         <div class="container">
             <div class="row">
@@ -24,7 +24,6 @@
             </div>
         </div>
     </div>
-
 
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('scripts')
