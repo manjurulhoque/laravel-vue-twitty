@@ -32,6 +32,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     // settings
     Route::get('settings/account', 'ProfileController@account')->name('setting.account');
+    Route::get('settings/password', 'ProfileController@account')->name('setting.account');
+    Route::post('settings/password', 'ProfileController@passwordUpdate');
     Route::post('settings/account', 'ProfileController@accountupdate')->name('setting.account');
 
     // Follow un-follow

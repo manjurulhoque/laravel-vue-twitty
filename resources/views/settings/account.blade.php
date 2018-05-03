@@ -29,7 +29,7 @@
                 <div class="option-box">
                     <ul>
                         <li>
-                            <a href="/settings/account" class="bold">
+                            <a href="/settings/account" class="{!! request()->is('settings/account') ? "bold": "" !!}">
                                 <div>
                                     Account
                                     <span><i class="fa fa-angle-right" aria-hidden="true"></i></span>
@@ -37,7 +37,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/settings/password">
+                            <a href="/settings/password" class="{!! request()->is('settings/password') ? "bold": "" !!}">
                                 <div>
                                     Password
                                     <span><i class="fa fa-angle-right" aria-hidden="true"></i></span>
@@ -46,36 +46,14 @@
                         </li>
                     </ul>
                 </div>
-
             </div>
-        </div><!--LEFTER ENDS-->
+        </div>
 
-        <div class="righter">
-            <div class="inner-righter">
-                <div class="acc">
-                    <div class="acc-heading">
-                        <h2>Account</h2>
-                        <h3>Change your basic account settings.</h3>
-                    </div>
-                    <div class="acc-content">
-                        <account-setting :user="{{ $user }}"></account-setting>
-                    </div>
-                </div>
-                <div class="content-setting">
-                    <div class="content-heading">
-
-                    </div>
-                    <div class="content-content">
-                        <div class="content-left">
-
-                        </div>
-                        <div class="content-right">
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!--RIGHTER ENDS-->
+        @if(request()->is('settings/account'))
+            <account-setting :user="{{ $user }}"></account-setting>
+        @elseif(request()->is('settings/password'))
+            <account-password :user="{{ $user }}"></account-password>
+        @endif
 
     </div>
 
