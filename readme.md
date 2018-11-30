@@ -1,7 +1,15 @@
-## About Laravel Twitter
+## Simple Twitter Clone
 
-Laravel Twitter is a web application built with Laravel framework and Vuejs.
+### Screenshots
 
-## License
+## Home page
+<img src="screenshots/one.png" height="500">
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Retweet
+<img src="screenshots/two.png" height="500">
+
+## Profile edit
+<img src="screenshots/three.png" height="500">
+
+## Change password
+<img src="screenshots/four.png" height="500">
